@@ -1,0 +1,59 @@
+body {
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #161616;
+  background-color: #fcfcfc;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.section-title {
+  color: #2c3e50;
+  border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 5px;
+  margin: 25px 0 15px;
+}
+
+.experience-item,
+.project-item {
+  margin-bottom: 20px;
+}
+
+.date-location {
+  font-style: italic;
+  color: #7f8c8d;
+  margin: 5px 0;
+}
+
+ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+ul li::before {
+  content: "• ";
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.skills-category {
+  margin: 10px 0;
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
