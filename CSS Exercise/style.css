@@ -1,196 +1,324 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #1a1a1a;
-  color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
 
 /* Navigation styles */
 .nav {
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1a1a1a;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-right: 2rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 2rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
 }
 
 .logo:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 .nav-links {
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  position: relative;
-  padding-bottom: 2px;
-  transition: color 0.3s ease;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
 }
 
 .nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #ffffff;
-  transition: width 0.3s ease;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 .nav-links a.active {
-  border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 
 /* Product grid styles */
 .container {
-  max-width: 1400px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
 }
 
 .product-card {
-  background-color: #e5e5e5;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
 .product-image-container {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .product-image {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .product-card:hover .product-image {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-/* Overlay effect on hover */
+/* Dialog styles */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dialog-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog {
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dialog-overlay.active .dialog {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.dialog-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.dialog-close:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dialog-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .dialog-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.dialog-image-container {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dialog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dialog-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.dialog-price {
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.dialog-description {
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.dialog-features {
+    color: #cccccc;
+}
+
+.dialog-features h4 {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.dialog-features ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #cccccc;
+}
+
+.dialog-features li {
+    margin-bottom: 0.25rem;
+}
+
+.add-to-cart-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e6e6e6;
+}
+
 .product-image-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background-color 0.3s ease;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s ease;
 }
 
 .product-card:hover .product-image-container::after {
-  background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .product-info {
-  padding: 1rem;
-  background-color: #1a1a1a;
-  transition: background-color 0.3s ease;
+    padding: 1rem;
+    background-color: #2a2a2a;
+    transition: background-color 0.3s ease;
 }
 
 .product-card:hover .product-info {
-  background-color: #2a2a2a;
+    background-color: #333333;
 }
 
-.product-title {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-.product-price {
-  font-size: 0.9rem;
-  color: #ffffff;
-}
-
-.view-more {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #000000;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.product-card:hover .view-more {
-  opacity: 1;
-}
-
-/* Quick shop button appears on hover */
 .quick-shop {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 0.8rem;
-  transition: bottom 0.3s ease;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 0.8rem;
+    transition: bottom 0.3s ease;
 }
 
 .product-card:hover .quick-shop {
-  bottom: 0;
+    bottom: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
-  .nav {
-    padding: 1rem;
-  }
+    .nav {
+        padding: 1rem;
+    }
 
-  .nav-links {
-    gap: 1rem;
-  }
+    .nav-links {
+        gap: 1rem;
+    }
 
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .dialog-content {
+        padding: 1.5rem;
+    }
+
+    .dialog-title {
+        font-size: 1.25rem;
+    }
+
+    .dialog-price {
+        font-size: 1.125rem;
+    }
 }

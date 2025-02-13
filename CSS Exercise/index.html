@@ -1,99 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lululemon Accessories</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav class="nav">
-      <div class="logo">lululemon</div>
-      <div class="nav-links">
-        <a href="#">Women</a>
-        <a href="#">Men</a>
-        <a href="#" class="active">Accessories</a>
-        <a href="#">Community</a>
-      </div>
-    </nav>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lululemon Accessories</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="logo">lululemon</div>
+            <div class="nav-links">
+                <a href="#">Women</a>
+                <a href="#">Men</a>
+                <a href="#" class="active">Accessories</a>
+                <a href="#">Community</a>
+            </div>
+        </nav>
 
-    <div class="container">
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image-container">
-            <img
-              src="/CSS Exercise//public/img_1.webp"
-              alt="Cruiser Backpack 23L"
-              class="product-image"
-            />
-            <div class="quick-shop">Quick Shop</div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Cruiser Backpack 23L</h3>
-            <p class="product-price">₱9,600.00</p>
-          </div>
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-card" onclick="openDialog(0)">
+                    <div class="product-image-container">
+                        <img
+                            src="/CSS Exercise//public/img_1.webp"
+                            alt="Cruiser Backpack 23L"
+                            class="product-image"
+                        />
+                        <div class="quick-shop">Quick Shop</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cruiser Backpack 23L</h3>
+                        <p class="product-price">₱9,600.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openDialog(1)">
+                    <div class="product-image-container">
+                        <img
+                            src="/CSS Exercise//public/img_2.webp"
+                            alt="On My Level Barrel Duffle Bag 16L"
+                            class="product-image"
+                        />
+                        <div class="quick-shop">Quick Shop</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">
+                            On My Level Barrel Duffle Bag 16L
+                        </h3>
+                        <p class="product-price">₱8,100.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openDialog(2)">
+                    <div class="product-image-container">
+                        <img
+                            src="/CSS Exercise//public/img_3.webp"
+                            alt="New Crew Backpack 22L Logo"
+                            class="product-image"
+                        />
+                        <div class="quick-shop">Quick Shop</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">
+                            New Crew Backpack 22L Logo
+                        </h3>
+                        <p class="product-price">₱6,600.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openDialog(3)">
+                    <div class="product-image-container">
+                        <img
+                            src="/CSS Exercise//public/img_4.webp"
+                            alt="Boxy Tote Bag 10L"
+                            class="product-image"
+                        />
+                        <div class="quick-shop">Quick Shop</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Boxy Tote Bag 10L</h3>
+                        <p class="product-price">₱8,100.00</p>
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="openDialog(4)">
+                    <div class="product-image-container">
+                        <img
+                            src="/CSS Exercise//public/img_5.webp"
+                            alt="Everywhere Backpack 22L"
+                            class="product-image"
+                        />
+                        <div class="quick-shop">Quick Shop</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Everywhere Backpack 22L</h3>
+                        <p class="product-price">₱6,100.00</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="product-card">
-          <div class="product-image-container">
-            <img
-              src="/CSS Exercise//public/img_2.webp"
-              alt="On My Level Barrel Duffle Bag 16L"
-              class="product-image"
-            />
-            <div class="quick-shop">Quick Shop</div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">On My Level Barrel Duffle Bag 16L</h3>
-            <p class="product-price">₱8,100.00</p>
-          </div>
+        <!-- Product Dialog -->
+        <div class="dialog-overlay" id="dialogOverlay">
+            <div class="dialog">
+                <button class="dialog-close" onclick="closeDialog()">
+                    &times;
+                </button>
+                <div class="dialog-content">
+                    <div class="dialog-image-container">
+                        <img
+                            src="/placeholder.svg"
+                            alt="Product"
+                            id="dialogImage"
+                            class="dialog-image"
+                        />
+                    </div>
+                    <div class="dialog-info">
+                        <h2 id="dialogTitle" class="dialog-title">
+                            Product Title
+                        </h2>
+                        <p id="dialogPrice" class="dialog-price">₱0.00</p>
+                        <p id="dialogDescription" class="dialog-description">
+                            Experience premium quality and exceptional design
+                            with this versatile product.
+                        </p>
+                        <div class="dialog-features">
+                            <h4>Features:</h4>
+                            <ul>
+                                <li>Water-repellent fabric</li>
+                                <li>Multiple compartments</li>
+                                <li>Padded laptop sleeve</li>
+                                <li>Adjustable straps</li>
+                            </ul>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="product-card">
-          <div class="product-image-container">
-            <img
-              src="/CSS Exercise//public/img_3.webp"
-              alt="New Crew Backpack 22L Logo"
-              class="product-image"
-            />
-            <div class="quick-shop">Quick Shop</div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">New Crew Backpack 22L Logo</h3>
-            <p class="product-price">₱6,600.00</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image-container">
-            <img
-              src="/CSS Exercise//public/img_4.webp"
-              alt="Boxy Tote Bag 10L"
-              class="product-image"
-            />
-            <div class="quick-shop">Quick Shop</div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Boxy Tote Bag 10L</h3>
-            <p class="product-price">₱8,100.00</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-image-container">
-            <img
-              src="/CSS Exercise//public/img_5.webp"
-              alt="Everywhere Backpack 22L"
-              class="product-image"
-            />
-            <div class="quick-shop">Quick Shop</div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">Everywhere Backpack 22L</h3>
-            <p class="product-price">₱6,100.00</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+        <script src="app.js"></script>
+    </body>
 </html>
